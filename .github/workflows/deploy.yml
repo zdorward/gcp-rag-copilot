@@ -38,14 +38,11 @@ jobs:
           GCP_PROJECT_ID: test-project
           GCS_BUCKET: test-bucket
 
-      # Authenticate using Workload Identity Federation
-      # See: https://github.com/google-github-actions/auth#setup
       - name: Authenticate to Google Cloud
         id: auth
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
