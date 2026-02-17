@@ -75,15 +75,21 @@ curl -s https://rag-api-708256638053.us-central1.run.app/sources | python3 -m js
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "What is the return policy?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
+  -d '{"question": "What is the return policy?"}' | python3 -m json.tool
 ```
+
+**What to point out:**
+- `answer` - The generated response from Gemini
+- `retrieved_chunks` - The relevant document sections found (the "R" in RAG)
+- `score` - Similarity scores showing relevance ranking
+- `citations` - Source references for traceability
 
 #### Question 2: Product Features
 
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "What features does the product have?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
+  -d '{"question": "What features does the product have?"}' | python3 -m json.tool
 ```
 
 #### Question 3: Contact Support
@@ -91,22 +97,10 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "How do I contact support?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
+  -d '{"question": "How do I contact support?"}' | python3 -m json.tool
 ```
 
 **Talking point:** "The system found the support email and phone number from the product documentation."
-
-#### (Optional) Show Full JSON Response
-
-To show the complete RAG pipeline with retrieved chunks and similarity scores:
-
-```bash
-curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
-  -H 'Content-Type: application/json' \
-  -d '{"question": "What is the return policy?"}' | python3 -m json.tool
-```
-
-**Talking point:** "Under the hood, you can see the retrieved chunks with similarity scores - this proves the answer is grounded in your actual documents, not hallucinated."
 
 ---
 
@@ -137,7 +131,7 @@ cd /Users/zackdorward/dev/atco && ./infra/run_ingest.sh local
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "Who is the CEO and when was the company founded?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
+  -d '{"question": "Who is the CEO and when was the company founded?"}' | python3 -m json.tool
 ```
 
 **Talking point:** "Within seconds, the new document is searchable and the AI can answer questions about it."
