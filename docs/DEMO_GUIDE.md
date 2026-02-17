@@ -75,7 +75,15 @@ curl -s https://rag-api-708256638053.us-central1.run.app/sources | python3 -m js
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "What is the return policy?"}' | python3 -m json.tool
+  -d '{"question": "What is the return policy?"}' | python3 -c "
+import sys,json
+r = json.load(sys.stdin)
+print('Answer:', r['answer'])
+print('\nSources:')
+for c in r['citations']:
+    print(f\"  - {c['source_uri'].split('/')[-1]}\")
+print(f\"\nLatency: {r['latency_ms']}ms\")
+"
 ```
 
 **Talking point:** "Notice the answer includes citations - we can trace every fact back to its source document."
@@ -85,7 +93,15 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "What features does the product have?"}' | python3 -m json.tool
+  -d '{"question": "What features does the product have?"}' | python3 -c "
+import sys,json
+r = json.load(sys.stdin)
+print('Answer:', r['answer'])
+print('\nSources:')
+for c in r['citations']:
+    print(f\"  - {c['source_uri'].split('/')[-1]}\")
+print(f\"\nLatency: {r['latency_ms']}ms\")
+"
 ```
 
 #### Question 3: Contact Support
@@ -93,10 +109,30 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "How do I contact support?"}' | python3 -m json.tool
+  -d '{"question": "How do I contact support?"}' | python3 -c "
+import sys,json
+r = json.load(sys.stdin)
+print('Answer:', r['answer'])
+print('\nSources:')
+for c in r['citations']:
+    print(f\"  - {c['source_uri'].split('/')[-1]}\")
+print(f\"\nLatency: {r['latency_ms']}ms\")
+"
 ```
 
 **Talking point:** "The system found the support email and phone number from the product documentation."
+
+#### (Optional) Show Full JSON Response
+
+To show the complete RAG pipeline with retrieved chunks and similarity scores:
+
+```bash
+curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
+  -H 'Content-Type: application/json' \
+  -d '{"question": "What is the return policy?"}' | python3 -m json.tool
+```
+
+**Talking point:** "Under the hood, you can see the retrieved chunks with similarity scores - this proves the answer is grounded in your actual documents, not hallucinated."
 
 ---
 
@@ -127,7 +163,14 @@ cd /Users/zackdorward/dev/atco && ./infra/run_ingest.sh local
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "Who is the CEO and when was the company founded?"}' | python3 -m json.tool
+  -d '{"question": "Who is the CEO and when was the company founded?"}' | python3 -c "
+import sys,json
+r = json.load(sys.stdin)
+print('Answer:', r['answer'])
+print('\nSources:')
+for c in r['citations']:
+    print(f\"  - {c['source_uri'].split('/')[-1]}\")
+"
 ```
 
 **Talking point:** "Within seconds, the new document is searchable and the AI can answer questions about it."
