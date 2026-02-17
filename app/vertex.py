@@ -51,7 +51,7 @@ class VertexClient:
         project_id: str,
         region: str,
         embedding_model: str = "text-embedding-004",
-        llm_model: str = "gemini-1.5-flash",
+        llm_model: str = "gemini-2.0-flash",
     ):
         self.project_id = project_id
         self.region = region

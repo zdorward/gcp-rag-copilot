@@ -16,7 +16,7 @@ fi
 : "${BQ_TABLE:=chunks}"
 : "${GCS_BUCKET:?GCS_BUCKET is required}"
 : "${EMBEDDING_MODEL:=text-embedding-004}"
-: "${LLM_MODEL:=gemini-1.5-flash}"
+: "${LLM_MODEL:=gemini-2.0-flash}"
 
 SERVICE_NAME="rag-copilot-api"
 IMAGE_NAME="$GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/rag-copilot/api"

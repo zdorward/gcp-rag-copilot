@@ -28,7 +28,7 @@ class Settings(BaseSettings):
 
     # Vertex AI Configuration
     embedding_model: str = "text-embedding-004"
-    llm_model: str = "gemini-1.5-flash"
+    llm_model: str = "gemini-2.0-flash"
 
     # Application Configuration
     log_level: str = "INFO"

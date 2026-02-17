@@ -48,7 +48,7 @@ class Chunk:
             "chunk_index": self.chunk_index,
             "chunk_text": self.chunk_text,
             "embedding": self.embedding,
-            "created_at": self.created_at,
+            "created_at": self.created_at.isoformat(),
         }
 
 

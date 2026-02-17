@@ -150,7 +150,7 @@ Response:
 | `BQ_TABLE` | No | chunks | BigQuery table |
 | `GCS_PREFIX` | No | documents/ | GCS path prefix |
 | `EMBEDDING_MODEL` | No | text-embedding-004 | Vertex AI embedding model |
-| `LLM_MODEL` | No | gemini-1.5-flash | Vertex AI LLM |
+| `LLM_MODEL` | No | gemini-2.0-flash | Vertex AI LLM |
 | `LOG_LEVEL` | No | INFO | Logging level |
 
 ## Cost Estimates

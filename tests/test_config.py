@@ -14,7 +14,7 @@ def test_settings_loads_from_env():
         "GCS_BUCKET": "test-bucket",
         "GCS_PREFIX": "docs/",
         "EMBEDDING_MODEL": "text-embedding-004",
-        "LLM_MODEL": "gemini-1.5-flash",
+        "LLM_MODEL": "gemini-2.0-flash",
         "LOG_LEVEL": "DEBUG",
         "APP_VERSION": "2.0.0",
     }
@@ -30,7 +30,7 @@ def test_settings_loads_from_env():
         assert settings.gcs_bucket == "test-bucket"
         assert settings.gcs_prefix == "docs/"
         assert settings.embedding_model == "text-embedding-004"
-        assert settings.llm_model == "gemini-1.5-flash"
+        assert settings.llm_model == "gemini-2.0-flash"
         assert settings.log_level == "DEBUG"
         assert settings.app_version == "2.0.0"
 
@@ -50,6 +50,6 @@ def test_settings_has_defaults():
         assert settings.bq_table == "chunks"
         assert settings.gcs_prefix == "documents/"
         assert settings.embedding_model == "text-embedding-004"
-        assert settings.llm_model == "gemini-1.5-flash"
+        assert settings.llm_model == "gemini-2.0-flash"
         assert settings.log_level == "INFO"
         assert settings.app_version == "1.0.0"

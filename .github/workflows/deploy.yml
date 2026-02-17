@@ -77,7 +77,7 @@ jobs:
             --memory=1Gi \
             --cpu=1 \
             --timeout=300 \
-            --set-env-vars="GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }},GCP_REGION=${{ env.GCP_REGION }},BQ_DATASET=${{ vars.BQ_DATASET }},BQ_TABLE=chunks,GCS_BUCKET=${{ vars.GCS_BUCKET }},EMBEDDING_MODEL=text-embedding-004,LLM_MODEL=gemini-1.5-flash,LOG_LEVEL=INFO"
+            --set-env-vars="GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }},GCP_REGION=${{ env.GCP_REGION }},BQ_DATASET=${{ vars.BQ_DATASET }},BQ_TABLE=chunks,GCS_BUCKET=${{ vars.GCS_BUCKET }},EMBEDDING_MODEL=text-embedding-004,LLM_MODEL=gemini-2.0-flash,LOG_LEVEL=INFO"
 
       - name: Get service URL
         run: |

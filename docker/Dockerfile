@@ -21,18 +21,23 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy installed packages from builder
-COPY --from=builder /root/.local /root/.local
+# Create non-root user for security (before copying packages)
+RUN useradd --create-home appuser
+
+# Copy installed packages from builder to appuser's home
+COPY --from=builder /root/.local /home/appuser/.local
+
+# Make sure packages are accessible by appuser
+RUN chown -R appuser:appuser /home/appuser/.local
 
 # Make sure scripts in .local are usable
-ENV PATH=/root/.local/bin:$PATH
+ENV PATH=/home/appuser/.local/bin:$PATH
 
 # Copy application code
 COPY app/ ./app/
 COPY ingestion/ ./ingestion/
 
-# Create non-root user for security
-RUN useradd --create-home appuser
+# Switch to non-root user
 USER appuser
 
 # Expose port

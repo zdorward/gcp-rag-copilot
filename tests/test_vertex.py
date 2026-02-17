@@ -12,7 +12,7 @@ def test_vertex_client_initialization():
             project_id="test-project",
             region="us-central1",
             embedding_model="text-embedding-004",
-            llm_model="gemini-1.5-flash",
+            llm_model="gemini-2.0-flash",
         )
 
         mock_aiplatform.init.assert_called_once_with(

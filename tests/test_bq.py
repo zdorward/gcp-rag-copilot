@@ -31,7 +31,7 @@ def test_chunk_model_to_bq_row():
     assert row["chunk_index"] == 0
     assert row["chunk_text"] == "Sample text content"
     assert row["embedding"] == [0.1, 0.2, 0.3]
-    assert row["created_at"] == datetime(2024, 1, 15, 10, 30, 0, tzinfo=timezone.utc)
+    assert row["created_at"] == "2024-01-15T10:30:00+00:00"
 
 
 def test_generate_doc_id():

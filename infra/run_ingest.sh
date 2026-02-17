@@ -19,7 +19,7 @@ fi
 : "${GCS_BUCKET:?GCS_BUCKET is required}"
 : "${GCS_PREFIX:=documents/}"
 : "${EMBEDDING_MODEL:=text-embedding-004}"
-: "${LLM_MODEL:=gemini-1.5-flash}"
+: "${LLM_MODEL:=gemini-2.0-flash}"
 
 echo "=== Running Document Ingestion ==="
 echo "Mode: $MODE"
