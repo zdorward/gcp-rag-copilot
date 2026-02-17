@@ -79,10 +79,7 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 import sys,json
 r = json.load(sys.stdin)
 print('Answer:', r['answer'])
-print('\nSources:')
-for c in r['citations']:
-    print(f\"  - {c['source_uri'].split('/')[-1]}\")
-print(f\"\nLatency: {r['latency_ms']}ms\")
+print(f\"Latency: {r['latency_ms']}ms\")
 "
 ```
 
@@ -97,10 +94,7 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 import sys,json
 r = json.load(sys.stdin)
 print('Answer:', r['answer'])
-print('\nSources:')
-for c in r['citations']:
-    print(f\"  - {c['source_uri'].split('/')[-1]}\")
-print(f\"\nLatency: {r['latency_ms']}ms\")
+print(f\"Latency: {r['latency_ms']}ms\")
 "
 ```
 
@@ -113,10 +107,7 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 import sys,json
 r = json.load(sys.stdin)
 print('Answer:', r['answer'])
-print('\nSources:')
-for c in r['citations']:
-    print(f\"  - {c['source_uri'].split('/')[-1]}\")
-print(f\"\nLatency: {r['latency_ms']}ms\")
+print(f\"Latency: {r['latency_ms']}ms\")
 "
 ```
 
@@ -167,9 +158,7 @@ curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
 import sys,json
 r = json.load(sys.stdin)
 print('Answer:', r['answer'])
-print('\nSources:')
-for c in r['citations']:
-    print(f\"  - {c['source_uri'].split('/')[-1]}\")
+print(f\"Latency: {r['latency_ms']}ms\")
 "
 ```
 
