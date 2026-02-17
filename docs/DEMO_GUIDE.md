@@ -75,27 +75,15 @@ curl -s https://rag-api-708256638053.us-central1.run.app/sources | python3 -m js
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "What is the return policy?"}' | python3 -c "
-import sys,json
-r = json.load(sys.stdin)
-print('Answer:', r['answer'])
-print(f\"Latency: {r['latency_ms']}ms\")
-"
+  -d '{"question": "What is the return policy?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
 ```
-
-**Talking point:** "Notice the answer includes citations - we can trace every fact back to its source document."
 
 #### Question 2: Product Features
 
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "What features does the product have?"}' | python3 -c "
-import sys,json
-r = json.load(sys.stdin)
-print('Answer:', r['answer'])
-print(f\"Latency: {r['latency_ms']}ms\")
-"
+  -d '{"question": "What features does the product have?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
 ```
 
 #### Question 3: Contact Support
@@ -103,12 +91,7 @@ print(f\"Latency: {r['latency_ms']}ms\")
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "How do I contact support?"}' | python3 -c "
-import sys,json
-r = json.load(sys.stdin)
-print('Answer:', r['answer'])
-print(f\"Latency: {r['latency_ms']}ms\")
-"
+  -d '{"question": "How do I contact support?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
 ```
 
 **Talking point:** "The system found the support email and phone number from the product documentation."
@@ -154,12 +137,7 @@ cd /Users/zackdorward/dev/atco && ./infra/run_ingest.sh local
 ```bash
 curl -s -X POST 'https://rag-api-708256638053.us-central1.run.app/ask' \
   -H 'Content-Type: application/json' \
-  -d '{"question": "Who is the CEO and when was the company founded?"}' | python3 -c "
-import sys,json
-r = json.load(sys.stdin)
-print('Answer:', r['answer'])
-print(f\"Latency: {r['latency_ms']}ms\")
-"
+  -d '{"question": "Who is the CEO and when was the company founded?"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['answer'])"
 ```
 
 **Talking point:** "Within seconds, the new document is searchable and the AI can answer questions about it."
